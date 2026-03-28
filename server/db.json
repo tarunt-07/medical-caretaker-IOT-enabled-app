@@ -1,0 +1,650 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Dr. Tarun Kumar",
+      "email": "doctor@test.com",
+      "password": "doctor123",
+      "role": "doctor",
+      "phone": "9876543210",
+      "specialization": "General Physician",
+      "avatar": null,
+      "createdAt": "2025-01-01T00:00:00Z"
+    },
+    {
+      "id": 2,
+      "name": "Dr. Priya Sharma",
+      "email": "doctor2@test.com",
+      "password": "doctor123",
+      "role": "doctor",
+      "phone": "9876543211",
+      "specialization": "Cardiologist",
+      "avatar": null,
+      "createdAt": "2025-01-01T00:00:00Z"
+    },
+    {
+      "id": 3,
+      "name": "Dr. Anil Mehta",
+      "email": "doctor3@test.com",
+      "password": "doctor123",
+      "role": "doctor",
+      "phone": "9876543212",
+      "specialization": "Neurologist",
+      "avatar": null,
+      "createdAt": "2025-01-01T00:00:00Z"
+    },
+    {
+      "id": 4,
+      "name": "Tarun Caretaker",
+      "email": "caretaker@test.com",
+      "password": "care123",
+      "role": "caretaker",
+      "phone": "9876543213",
+      "avatar": null,
+      "createdAt": "2025-01-01T00:00:00Z"
+    },
+    {
+      "id": 5,
+      "name": "Priya Caretaker",
+      "email": "caretaker2@test.com",
+      "password": "care123",
+      "role": "caretaker",
+      "phone": "9876543214",
+      "avatar": null,
+      "createdAt": "2025-01-01T00:00:00Z"
+    },
+    {
+      "id": 6,
+      "name": "Rahul Patient",
+      "email": "patient@test.com",
+      "password": "patient123",
+      "role": "patient",
+      "phone": "9876543215",
+      "avatar": null,
+      "createdAt": "2025-01-01T00:00:00Z"
+    },
+    {
+      "id": 7,
+      "name": "tarun",
+      "email": "tarun@gmail.com",
+      "password": "tarun23012007",
+      "role": "doctor"
+    },
+    {
+      "id": 8,
+      "name": "Tarun Kumar",
+      "email": "tarunjan2007@gmail.com",
+      "password": "dfgh",
+      "role": "caretaker"
+    },
+    {
+      "id": 9,
+      "name": "praneetha",
+      "email": "praneethagd@gmail.com",
+      "password": "Deepa$12345",
+      "role": "doctor"
+    },
+    {
+      "id": 10,
+      "name": "tarunk..",
+      "email": "thiagusam@gmail.com",
+      "password": "tarunjan2007",
+      "role": "caretaker"
+    }
+  ],
+  "patients": [
+    {
+      "id": 1,
+      "userId": 6,
+      "name": "Rahul Sharma",
+      "age": 45,
+      "gender": "Male",
+      "bloodGroup": "B+",
+      "condition": "Stable",
+      "illness": "Post-surgery recovery",
+      "allergies": "Penicillin",
+      "emergencyContact": "9876500001",
+      "assignedDoctorId": 1,
+      "assignedCaretakerId": 4,
+      "weight": 72,
+      "height": 175,
+      "createdAt": "2025-01-01T00:00:00Z"
+    },
+    {
+      "id": 2,
+      "name": "Meena Devi",
+      "age": 62,
+      "gender": "Female",
+      "bloodGroup": "O+",
+      "condition": "Monitoring",
+      "illness": "Hypertension",
+      "allergies": "None",
+      "emergencyContact": "9876500002",
+      "assignedDoctorId": 2,
+      "assignedCaretakerId": 4,
+      "weight": 65,
+      "height": 160,
+      "createdAt": "2025-01-01T00:00:00Z"
+    },
+    {
+      "id": 3,
+      "name": "Arjun Singh",
+      "age": 38,
+      "gender": "Male",
+      "bloodGroup": "A+",
+      "condition": "Critical",
+      "illness": "Diabetes Type 2",
+      "allergies": "Sulfa drugs",
+      "emergencyContact": "9876500003",
+      "assignedDoctorId": 1,
+      "assignedCaretakerId": 5,
+      "weight": 85,
+      "height": 180,
+      "createdAt": "2025-01-01T00:00:00Z"
+    },
+    {
+      "id": 4,
+      "name": "Sunita Patel",
+      "age": 55,
+      "gender": "Female",
+      "bloodGroup": "AB+",
+      "condition": "Stable",
+      "illness": "Thyroid disorder",
+      "allergies": "Aspirin",
+      "emergencyContact": "9876500004",
+      "assignedDoctorId": 1,
+      "assignedCaretakerId": 4,
+      "weight": 68,
+      "height": 158,
+      "createdAt": "2025-01-02T00:00:00Z"
+    },
+    {
+      "id": 5,
+      "name": "Vikram Nair",
+      "age": 70,
+      "gender": "Male",
+      "bloodGroup": "B-",
+      "condition": "Monitoring",
+      "illness": "Parkinson's disease",
+      "allergies": "None",
+      "emergencyContact": "9876500005",
+      "assignedDoctorId": 3,
+      "assignedCaretakerId": 5,
+      "weight": 60,
+      "height": 168,
+      "createdAt": "2025-01-02T00:00:00Z"
+    },
+    {
+      "id": 6,
+      "name": "Lakshmi Reddy",
+      "age": 48,
+      "gender": "Female",
+      "bloodGroup": "O-",
+      "condition": "Stable",
+      "illness": "Asthma",
+      "allergies": "Dust, Pollen",
+      "emergencyContact": "9876500006",
+      "assignedDoctorId": 2,
+      "assignedCaretakerId": 4,
+      "weight": 58,
+      "height": 155,
+      "createdAt": "2025-01-03T00:00:00Z"
+    },
+    {
+      "id": 7,
+      "name": "Rajesh Gupta",
+      "age": 52,
+      "gender": "Male",
+      "bloodGroup": "A-",
+      "condition": "Critical",
+      "illness": "Chronic kidney disease",
+      "allergies": "NSAIDs",
+      "emergencyContact": "9876500007",
+      "assignedDoctorId": 1,
+      "assignedCaretakerId": 5,
+      "weight": 78,
+      "height": 172,
+      "createdAt": "2025-01-03T00:00:00Z"
+    },
+    {
+      "id": 8,
+      "name": "Anita Joshi",
+      "age": 35,
+      "gender": "Female",
+      "bloodGroup": "B+",
+      "condition": "Stable",
+      "illness": "Migraine",
+      "allergies": "None",
+      "emergencyContact": "9876500008",
+      "assignedDoctorId": 3,
+      "assignedCaretakerId": 4,
+      "weight": 55,
+      "height": 162,
+      "createdAt": "2025-01-04T00:00:00Z"
+    },
+    {
+      "id": 9,
+      "name": "Suresh Iyer",
+      "age": 65,
+      "gender": "Male",
+      "bloodGroup": "O+",
+      "condition": "Monitoring",
+      "illness": "Arthritis",
+      "allergies": "Latex",
+      "emergencyContact": "9876500009",
+      "assignedDoctorId": 2,
+      "assignedCaretakerId": 5,
+      "weight": 70,
+      "height": 165,
+      "createdAt": "2025-01-04T00:00:00Z"
+    },
+    {
+      "id": 10,
+      "name": "Kavita Desai",
+      "age": 42,
+      "gender": "Female",
+      "bloodGroup": "AB-",
+      "condition": "Stable",
+      "illness": "Depression",
+      "allergies": "None",
+      "emergencyContact": "9876500010",
+      "assignedDoctorId": 3,
+      "assignedCaretakerId": 4,
+      "weight": 62,
+      "height": 160,
+      "createdAt": "2025-01-05T00:00:00Z"
+    }
+  ],
+  "prescriptions": [
+    {
+      "id": 1,
+      "medicine": "Paracetamol",
+      "dosage": "500 mg",
+      "frequency": "8:00 AM",
+      "duration": "7 days",
+      "status": "taken",
+      "patientId": 1,
+      "doctorId": 1,
+      "notes": "Take after food",
+      "createdAt": "2025-01-01T00:00:00Z"
+    },
+    {
+      "id": 2,
+      "medicine": "Vitamin D3",
+      "dosage": "1 Tablet",
+      "frequency": "1:00 PM",
+      "duration": "30 days",
+      "status": "pending",
+      "patientId": 1,
+      "doctorId": 1,
+      "notes": "Take with milk",
+      "createdAt": "2025-01-01T00:00:00Z"
+    },
+    {
+      "id": 3,
+      "medicine": "Amlodipine",
+      "dosage": "5 mg",
+      "frequency": "9:00 PM",
+      "duration": "Ongoing",
+      "status": "pending",
+      "patientId": 2,
+      "doctorId": 2,
+      "notes": "Do not skip",
+      "createdAt": "2025-01-01T00:00:00Z"
+    },
+    {
+      "id": 4,
+      "medicine": "Metformin",
+      "dosage": "500 mg",
+      "frequency": "8:00 AM, 8:00 PM",
+      "duration": "Ongoing",
+      "status": "taken",
+      "patientId": 3,
+      "doctorId": 1,
+      "notes": "Take with meals",
+      "createdAt": "2025-01-01T00:00:00Z"
+    },
+    {
+      "id": 5,
+      "medicine": "Thyroxine",
+      "dosage": "50 mcg",
+      "frequency": "6:00 AM",
+      "duration": "Ongoing",
+      "status": "pending",
+      "patientId": 4,
+      "doctorId": 1,
+      "notes": "Take empty stomach",
+      "createdAt": "2025-01-02T00:00:00Z"
+    },
+    {
+      "id": 6,
+      "medicine": "Levodopa",
+      "dosage": "100 mg",
+      "frequency": "8:00 AM, 2:00 PM, 8:00 PM",
+      "duration": "Ongoing",
+      "status": "missed",
+      "patientId": 5,
+      "doctorId": 3,
+      "notes": "Strict timing required",
+      "createdAt": "2025-01-02T00:00:00Z"
+    },
+    {
+      "id": 7,
+      "medicine": "Salbutamol Inhaler",
+      "dosage": "2 puffs",
+      "frequency": "As needed",
+      "duration": "Ongoing",
+      "status": "taken",
+      "patientId": 6,
+      "doctorId": 2,
+      "notes": "Use during breathing difficulty",
+      "createdAt": "2025-01-03T00:00:00Z"
+    },
+    {
+      "id": 8,
+      "medicine": "Erythropoietin",
+      "dosage": "4000 IU",
+      "frequency": "Mon/Wed/Fri",
+      "duration": "Ongoing",
+      "status": "pending",
+      "patientId": 7,
+      "doctorId": 1,
+      "notes": "Subcutaneous injection",
+      "createdAt": "2025-01-03T00:00:00Z"
+    }
+  ],
+  "vitals": [
+    {
+      "id": 1,
+      "patientId": 1,
+      "bloodPressure": "120/80",
+      "heartRate": 72,
+      "temperature": 98.6,
+      "oxygenLevel": 98,
+      "bloodSugar": 95,
+      "recordedAt": "2025-01-10T08:00:00Z",
+      "recordedBy": "Tarun Caretaker"
+    },
+    {
+      "id": 2,
+      "patientId": 2,
+      "bloodPressure": "140/90",
+      "heartRate": 80,
+      "temperature": 98.4,
+      "oxygenLevel": 96,
+      "bloodSugar": 110,
+      "recordedAt": "2025-01-10T08:00:00Z",
+      "recordedBy": "Tarun Caretaker"
+    },
+    {
+      "id": 3,
+      "patientId": 3,
+      "bloodPressure": "130/85",
+      "heartRate": 88,
+      "temperature": 98.8,
+      "oxygenLevel": 95,
+      "bloodSugar": 180,
+      "recordedAt": "2025-01-10T08:00:00Z",
+      "recordedBy": "Priya Caretaker"
+    }
+  ],
+  "alerts": [
+    {
+      "id": 1,
+      "title": "Missed Pill Alert",
+      "message": "Levodopa afternoon dose missed for Vikram Nair.",
+      "level": "high",
+      "patientId": 5,
+      "read": false,
+      "createdAt": "2025-01-10T14:05:00Z"
+    },
+    {
+      "id": 2,
+      "title": "Doctor Review Pending",
+      "message": "Caretaker requested dosage change for Arjun Singh.",
+      "level": "high",
+      "patientId": 3,
+      "read": false,
+      "createdAt": "2025-01-10T09:00:00Z"
+    },
+    {
+      "id": 3,
+      "title": "Device Online",
+      "message": "Smart Dispenser #1 connected successfully.",
+      "level": "low",
+      "patientId": null,
+      "read": true,
+      "createdAt": "2025-01-10T07:58:00Z"
+    },
+    {
+      "id": 4,
+      "title": "High Blood Sugar",
+      "message": "Arjun Singh blood sugar at 180 mg/dL.",
+      "level": "high",
+      "patientId": 3,
+      "read": false,
+      "createdAt": "2025-01-10T08:05:00Z"
+    },
+    {
+      "id": 5,
+      "title": "Device Offline",
+      "message": "Smart Dispenser #2 went offline.",
+      "level": "high",
+      "patientId": null,
+      "read": false,
+      "createdAt": "2025-01-10T05:00:00Z"
+    }
+  ],
+  "appointments": [
+    {
+      "id": 1,
+      "patientId": 1,
+      "patientName": "Rahul Sharma",
+      "doctorId": 1,
+      "doctorName": "Dr. Tarun Kumar",
+      "date": "2025-01-11",
+      "time": "10:30 AM",
+      "type": "General Review",
+      "status": "scheduled"
+    },
+    {
+      "id": 2,
+      "patientId": 2,
+      "patientName": "Meena Devi",
+      "doctorId": 2,
+      "doctorName": "Dr. Priya Sharma",
+      "date": "2025-01-13",
+      "time": "2:00 PM",
+      "type": "BP Check",
+      "status": "scheduled"
+    },
+    {
+      "id": 3,
+      "patientId": 3,
+      "patientName": "Arjun Singh",
+      "doctorId": 1,
+      "doctorName": "Dr. Tarun Kumar",
+      "date": "2025-01-12",
+      "time": "11:00 AM",
+      "type": "Diabetes Review",
+      "status": "scheduled"
+    }
+  ],
+  "logs": [
+    {
+      "id": 1,
+      "patientId": 1,
+      "date": "2025-01-10",
+      "note": "Patient had a good morning. All medicines taken on time. BP normal.",
+      "by": "Tarun Caretaker",
+      "createdAt": "2025-01-10T09:00:00Z"
+    },
+    {
+      "id": 2,
+      "patientId": 1,
+      "date": "2025-01-09",
+      "note": "Mild fever observed (99.2F). Doctor notified. Extra hydration given.",
+      "by": "Tarun Caretaker",
+      "createdAt": "2025-01-09T09:00:00Z"
+    },
+    {
+      "id": 3,
+      "patientId": 3,
+      "date": "2025-01-10",
+      "note": "Blood sugar high this morning. Reduced carb intake suggested.",
+      "by": "Priya Caretaker",
+      "createdAt": "2025-01-10T10:00:00Z"
+    }
+  ],
+  "messages": [
+    {
+      "id": 1,
+      "from": 4,
+      "to": 1,
+      "fromName": "Tarun Caretaker",
+      "toName": "Dr. Tarun Kumar",
+      "text": "Good morning Doctor! All medicines taken on time today.",
+      "read": true,
+      "createdAt": "2025-01-10T09:05:00Z"
+    },
+    {
+      "id": 2,
+      "from": 1,
+      "to": 4,
+      "fromName": "Dr. Tarun Kumar",
+      "toName": "Tarun Caretaker",
+      "text": "Good morning! Please check Rahul's BP this afternoon.",
+      "read": true,
+      "createdAt": "2025-01-10T09:10:00Z"
+    },
+    {
+      "id": 3,
+      "from": 4,
+      "to": 1,
+      "fromName": "Tarun Caretaker",
+      "toName": "Dr. Tarun Kumar",
+      "text": "BP recorded as 122/82. Slightly elevated.",
+      "read": false,
+      "createdAt": "2025-01-10T15:00:00Z"
+    },
+    {
+      "id": 4,
+      "from": 5,
+      "to": 2,
+      "fromName": "Priya Caretaker",
+      "toName": "Dr. Priya Sharma",
+      "text": "Doctor, Meena's BP is at 140/90 today.",
+      "read": true,
+      "createdAt": "2025-01-10T10:00:00Z"
+    },
+    {
+      "id": 5,
+      "from": 2,
+      "to": 5,
+      "fromName": "Dr. Priya Sharma",
+      "toName": "Priya Caretaker",
+      "text": "Ensure she takes evening medication on time. Call if above 150.",
+      "read": true,
+      "createdAt": "2025-01-10T10:15:00Z"
+    }
+  ],
+  "reports": [
+    {
+      "id": 1,
+      "patientId": 1,
+      "title": "Blood Test Report",
+      "type": "blood_test",
+      "status": "reviewed",
+      "uploadedBy": "Tarun Caretaker",
+      "reviewedBy": "Dr. Tarun Kumar",
+      "notes": "Hemoglobin slightly low, iron supplement recommended.",
+      "createdAt": "2025-01-08T00:00:00Z"
+    },
+    {
+      "id": 2,
+      "patientId": 1,
+      "title": "ECG Report",
+      "type": "ecg",
+      "status": "pending",
+      "uploadedBy": "Tarun Caretaker",
+      "reviewedBy": null,
+      "notes": "",
+      "createdAt": "2025-01-10T00:00:00Z"
+    },
+    {
+      "id": 3,
+      "patientId": 2,
+      "title": "BP Monitoring Report",
+      "type": "bp_report",
+      "status": "reviewed",
+      "uploadedBy": "Priya Caretaker",
+      "reviewedBy": "Dr. Priya Sharma",
+      "notes": "Consistent high BP, dosage increased.",
+      "createdAt": "2025-01-07T00:00:00Z"
+    },
+    {
+      "id": 4,
+      "patientId": 3,
+      "title": "HbA1c Test",
+      "type": "blood_test",
+      "status": "pending",
+      "uploadedBy": "Priya Caretaker",
+      "reviewedBy": null,
+      "notes": "",
+      "createdAt": "2025-01-10T00:00:00Z"
+    }
+  ],
+  "devices": [
+    {
+      "id": 1,
+      "name": "Smart Dispenser #1",
+      "type": "Arduino/ESP32",
+      "status": "connected",
+      "patientId": 1,
+      "pillsRemaining": 14,
+      "pillsDispensed": 6,
+      "lastSync": "2026-03-28T08:11:07.259Z"
+    },
+    {
+      "id": 2,
+      "name": "Smart Dispenser #2",
+      "type": "Raspberry Pi",
+      "status": "offline",
+      "patientId": 2,
+      "pillsRemaining": 0,
+      "pillsDispensed": 0,
+      "lastSync": "2025-01-10T05:00:00Z"
+    }
+  ],
+  "approvalRequests": [
+    {
+      "id": 1,
+      "type": "dosage_change",
+      "requestedBy": 4,
+      "requestedByName": "Tarun Caretaker",
+      "patientId": 1,
+      "patientName": "Rahul Sharma",
+      "prescriptionId": 2,
+      "currentDosage": "1 Tablet",
+      "requestedDosage": "2 Tablets",
+      "reason": "Doctor suggested increasing dose last visit",
+      "status": "pending",
+      "reviewedBy": null,
+      "createdAt": "2025-01-10T10:00:00Z"
+    },
+    {
+      "id": 2,
+      "type": "new_medicine",
+      "requestedBy": 5,
+      "requestedByName": "Priya Caretaker",
+      "patientId": 3,
+      "patientName": "Arjun Singh",
+      "medicine": "Insulin Glargine",
+      "dosage": "10 units",
+      "reason": "Blood sugar consistently high",
+      "status": "pending",
+      "reviewedBy": null,
+      "createdAt": "2025-01-10T11:00:00Z"
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Dr. Mehta",
+      "email": "doctor@med.com",
+      "password": "123456",
+      "role": "doctor"
+    },
+    {
+      "id": 2,
+      "name": "Tarun Kumar",
+      "email": "caretaker@med.com",
+      "password": "123456",
+      "role": "caretaker"
+    },
+    {
+      "id": 3,
+      "name": "Rahul Sharma",
+      "email": "patient@med.com",
+      "password": "123456",
+      "role": "patient"
+    },
+    {
+      "id": 4,
+      "name": "tarun",
+      "email": "tarunjan@gmail.com",
+      "password": "tarun23012007",
+      "role": "caretaker"
+    }
+  ],
+  "patients": [
+    {
+      "id": 1,
+      "name": "Rahul Sharma",
+      "age": 58,
+      "gender": "Male",
+      "condition": "Stable",
+      "illnessHistory": [
+        "Hypertension",
+        "Post-surgery recovery"
+      ],
+      "treatments": [
+        "BP medication",
+        "Post-operative antibiotics"
+      ],
+      "doctorNotes": [
+        "Continue hydration",
+        "Weekly observation required"
+      ]
+    }
+  ],
+  "prescriptions": [
+    {
+      "id": 1,
+      "patientId": 1,
+      "medicine": "Paracetamol",
+      "dosage": "500 mg",
+      "frequency": "Twice daily",
+      "status": "pending"
+    },
+    {
+      "id": 2,
+      "patientId": 1,
+      "medicine": "Vitamin D",
+      "dosage": "1 tablet",
+      "frequency": "Afternoon",
+      "status": "taken"
+    }
+  ],
+  "logs": [
+    {
+      "id": 1,
+      "patientName": "Rahul Sharma",
+      "temperature": "99 F",
+      "bloodPressure": "120/80",
+      "sugar": "110",
+      "note": "Patient stable, mild weakness."
+    }
+  ],
+  "devices": [
+    {
+      "id": 1,
+      "name": "Smart Pill Dispenser",
+      "type": "Arduino",
+      "status": "connected",
+      "lastSync": "Not connected yet"
+    }
+  ],
+  "alerts": [
+    {
+      "id": 1,
+      "title": "Missed Dose Warning",
+      "message": "Patient missed the 8:00 AM medicine slot.",
+      "level": "high",
+      "createdAt": "2026-03-10T10:00:00.000Z"
+    }
+  ],
+  "appointments": [
+    {
+      "id": 1,
+      "patientId": 1,
+      "title": "General Review",
+      "date": "Tomorrow",
+      "time": "10:30 AM"
+    }
+  ],
+  "reports": [
+    {
+      "id": 1,
+      "patientId": 1,
+      "title": "Blood Test Report",
+      "status": "Uploaded"
+    }
+  ]
+}
