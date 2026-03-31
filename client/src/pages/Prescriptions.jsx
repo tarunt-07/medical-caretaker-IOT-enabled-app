@@ -50,7 +50,9 @@ function Prescriptions() {
             value={selectedPatientId}
             onChange={(event) => setSelectedPatientId(event.target.value)}
             style={{
-              minWidth: "220px",
+              minWidth: "0",
+              width: "100%",
+              maxWidth: "220px",
               padding: "12px 14px",
               borderRadius: "14px",
               border: "1px solid rgba(255,255,255,0.14)",
@@ -80,7 +82,7 @@ function Prescriptions() {
           </div>
         )}
 
-        <div className="dashboard-grid" style={{ gridTemplateColumns: "1.1fr 0.9fr" }}>
+        <div className="dashboard-grid" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))" }}>
           <div className="section-card">
             <div className="section-title" style={{ marginBottom: "16px" }}>
               Today&apos;s Schedule for {selectedPatient.name}

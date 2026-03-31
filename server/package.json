@@ -8,6 +8,7 @@
     "dev": "nodemon src/app.js"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.57.4",
     "concurrently": "^9.2.1",
     "cors": "^2.8.6",
     "dotenv": "^16.0.3",

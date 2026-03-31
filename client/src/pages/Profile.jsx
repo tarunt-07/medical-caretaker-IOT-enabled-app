@@ -75,7 +75,7 @@ function Profile() {
               Edit
             </button>
           ) : (
-            <div style={{ display: "flex", gap: "10px" }}>
+            <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
               <button className="btn btn-primary" onClick={handleSave}>
                 Save
               </button>
@@ -86,25 +86,17 @@ function Profile() {
           )}
         </div>
 
-        <div className="dashboard-grid" style={{ gridTemplateColumns: "0.95fr 1.45fr" }}>
+        <div className="dashboard-grid" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
             <div className="section-card" style={{ textAlign: "center" }}>
               <div
-                style={{
-                  width: "96px",
-                  height: "96px",
-                  borderRadius: "50%",
-                  margin: "0 auto 16px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontSize: "2rem",
-                  fontWeight: 900,
-                  color: "#04111b",
-                  background: "linear-gradient(135deg, #22c6ce, #67a7ff)",
-                }}
+                className="profile-avatar"
               >
-                {initials}
+                {user.avatar ? (
+                  <img className="profile-avatar-image" src={user.avatar} alt={`${user.name} avatar`} />
+                ) : (
+                  initials
+                )}
               </div>
               <div style={{ fontWeight: 800, fontSize: "1.2rem" }}>{user.name}</div>
               <div style={{ marginTop: "6px", color: "var(--muted)" }}>{user.email}</div>
@@ -232,7 +224,9 @@ function Profile() {
                   value={selectedPatientId}
                   onChange={(event) => setSelectedPatientId(event.target.value)}
                   style={{
-                    minWidth: "220px",
+                    minWidth: "0",
+                    width: "100%",
+                    maxWidth: "220px",
                     padding: "10px 12px",
                     borderRadius: "14px",
                     border: "1px solid rgba(255,255,255,0.14)",

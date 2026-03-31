@@ -47,6 +47,11 @@
       "doctorNotes": [
         "Continue hydration",
         "Weekly observation required"
+      ],
+      "firstAidGuidance": [
+        "If Rahul feels faint, help him sit or lie down and monitor for 10 minutes.",
+        "If bleeding starts at the surgical area, apply clean pressure and contact the doctor immediately.",
+        "If fever goes above 100.4 F, record it and escalate the same day."
       ]
     }
   ],

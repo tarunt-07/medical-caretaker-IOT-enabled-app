@@ -88,6 +88,7 @@ function getCurrentUser() {
 function Chat() {
   const user = getCurrentUser();
   const sidebarRole = user.role.charAt(0).toUpperCase() + user.role.slice(1);
+  const isMobileLayout = typeof window !== "undefined" && window.innerWidth < 960;
 
   const [threads, setThreads] = useState(() => readThreads());
   const [activeContactId, setActiveContactId] = useState(
@@ -284,8 +285,8 @@ function Chat() {
           className="glass-card"
           style={{
             display: "grid",
-            gridTemplateColumns: "320px 1fr",
-            height: "calc(100vh - 260px)",
+            gridTemplateColumns: isMobileLayout ? "1fr" : "320px minmax(0, 1fr)",
+            minHeight: "calc(100vh - 260px)",
             overflow: "hidden",
           }}
         >
@@ -472,7 +473,7 @@ function Chat() {
                       key={message.id}
                       style={{ display: "flex", justifyContent: sent ? "flex-end" : "flex-start" }}
                     >
-                      <div style={{ maxWidth: "66%" }}>
+                      <div style={{ width: "100%", maxWidth: "66%" }}>
                         <div
                           style={{
                             padding: "12px 16px",
@@ -569,6 +570,7 @@ function Chat() {
                   borderTop: "1px solid rgba(255,255,255,0.08)",
                   display: "flex",
                   gap: "10px",
+                  flexWrap: "wrap",
                   background: "rgba(255,255,255,0.03)",
                 }}
               >
@@ -578,7 +580,7 @@ function Chat() {
                   onKeyDown={(event) => event.key === "Enter" && handleSend()}
                   placeholder={`Message ${activeContact.name}...`}
                   style={{
-                    flex: 1,
+                    flex: "1 1 220px",
                     padding: "12px 14px",
                     borderRadius: "14px",
                     border: "1px solid rgba(255,255,255,0.14)",
@@ -586,7 +588,7 @@ function Chat() {
                     color: "#f4fbff",
                   }}
                 />
-                <button className="btn btn-primary" onClick={handleSend} disabled={sending || !input.trim()}>
+                <button className="btn btn-primary" onClick={handleSend} disabled={sending || !input.trim()} style={{ width: "auto" }}>
                   {sending ? "Sending..." : "Send"}
                 </button>
               </div>

@@ -3,8 +3,8 @@ import {
   CHAT_CONTACTS_BY_ROLE,
   CHAT_MESSAGES,
 } from "../data/mockClinicData";
+import { API_BASE_URL } from "../config/api";
 
-const BASE = import.meta.env.VITE_API_BASE || "http://localhost:5000/api";
 const STORAGE_KEY = "prantar_offline_store_v1";
 
 const DEFAULT_USERS = [
@@ -43,6 +43,7 @@ const DEFAULT_PATIENTS = CARE_PATIENTS.map((patient) => ({
   allergies: patient.allergies,
   vitals: patient.vitals,
   nextAppointment: patient.nextAppointment,
+  firstAidGuidance: patient.firstAidGuidance,
 }));
 
 const DEFAULT_PRESCRIPTIONS = CARE_PATIENTS.flatMap((patient) =>
@@ -243,7 +244,7 @@ function withMeta(data, offline = true, message = null) {
 }
 
 async function tryServer(path, options = {}) {
-  const response = await fetch(`${BASE}${path}`, {
+  const response = await fetch(`${API_BASE_URL}${path}`, {
     headers: { "Content-Type": "application/json" },
     ...options,
   });
@@ -388,6 +389,51 @@ export const api = {
 
   async getPatients() {
     return preferServer("/patients", () => withMeta(ensureStore().patients));
+  },
+
+  async addPatient(data) {
+    return preferServer(
+      "/patients",
+      () => {
+        const store = ensureStore();
+        const nextPatient = {
+          id: nextId(store.patients),
+          ...data,
+          age: Number(data.age),
+          firstAidGuidance: data.firstAidGuidance || [],
+        };
+        updateStore((current) => ({
+          ...current,
+          patients: [...current.patients, nextPatient],
+        }));
+        return withMeta(nextPatient);
+      },
+      { method: "POST", body: JSON.stringify(data) }
+    );
+  },
+
+  async updatePatient(id, data) {
+    return preferServer(
+      `/patients/${id}`,
+      () => {
+        let updated = null;
+        updateStore((current) => ({
+          ...current,
+          patients: current.patients.map((patient) => {
+            if (Number(patient.id) !== Number(id)) return patient;
+            updated = {
+              ...patient,
+              ...data,
+              age: data.age !== undefined ? Number(data.age) : patient.age,
+              firstAidGuidance: data.firstAidGuidance ?? patient.firstAidGuidance ?? [],
+            };
+            return updated;
+          }),
+        }));
+        return withMeta(updated);
+      },
+      { method: "PUT", body: JSON.stringify(data) }
+    );
   },
 
   async getPrescriptions() {

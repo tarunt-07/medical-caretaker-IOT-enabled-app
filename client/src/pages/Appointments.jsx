@@ -112,8 +112,8 @@ function Appointments() {
 
         {/* Confirm Delete Modal */}
         {confirmDelete && (
-          <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.4)", zIndex: 1000, display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <div className="glass-card" style={{ width: "360px", padding: "28px", textAlign: "center" }}>
+          <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.4)", zIndex: 1000, display: "flex", alignItems: "center", justifyContent: "center", padding: "20px" }}>
+            <div className="glass-card" style={{ width: "min(360px, 100%)", maxHeight: "90vh", overflowY: "auto", padding: "28px", textAlign: "center" }}>
               <div style={{ fontSize: "2.5rem", marginBottom: "12px" }}>⚠️</div>
               <div style={{ fontWeight: 800, fontSize: "1.1rem", marginBottom: "8px" }}>Delete Appointment?</div>
               <div style={{ color: "var(--muted)", fontSize: "0.9rem", marginBottom: "24px" }}>
@@ -132,8 +132,8 @@ function Appointments() {
 
         {/* Add Modal */}
         {showAdd && (
-          <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.4)", zIndex: 1000, display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <div className="glass-card" style={{ width: "440px", padding: "28px" }}>
+          <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.4)", zIndex: 1000, display: "flex", alignItems: "center", justifyContent: "center", padding: "20px" }}>
+            <div className="glass-card" style={{ width: "min(440px, 100%)", maxHeight: "90vh", overflowY: "auto", padding: "28px" }}>
               <div style={{ fontWeight: 800, fontSize: "1.1rem", marginBottom: "20px", color: "var(--text)" }}>Schedule Appointment</div>
               <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
                 <div>
@@ -179,7 +179,7 @@ function Appointments() {
         ) : (
           <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
             {filtered.map(a => (
-              <div key={a.id} className="glass-card" style={{ padding: "18px 22px", display: "flex", alignItems: "center", gap: "20px" }}>
+              <div key={a.id} className="glass-card" style={{ padding: "18px 22px", display: "flex", alignItems: "center", gap: "20px", flexWrap: "wrap" }}>
                 {/* Date Box */}
                 <div style={{ width: "52px", height: "52px", borderRadius: "var(--radius)", background: "linear-gradient(135deg, var(--primary), var(--teal))", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", color: "white", flexShrink: 0 }}>
                   <div style={{ fontSize: "0.7rem", fontWeight: 700 }}>
@@ -204,7 +204,7 @@ function Appointments() {
                 </span>
 
                 {/* Actions */}
-                <div style={{ display: "flex", gap: "6px" }}>
+                <div style={{ display: "flex", gap: "6px", flexWrap: "wrap" }}>
                   {user.role === "doctor" && a.status === "scheduled" && (
                     <>
                       <button onClick={() => handleStatusChange(a.id, "completed")}

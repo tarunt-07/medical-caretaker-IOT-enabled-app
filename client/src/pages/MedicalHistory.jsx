@@ -7,6 +7,7 @@ function MedicalHistory() {
   const user = JSON.parse(
     localStorage.getItem("user") || '{"name":"Tarunk","role":"caretaker","id":4}'
   );
+  const isMobileLayout = typeof window !== "undefined" && window.innerWidth < 960;
   const sidebarRole =
     (user.role || "caretaker").charAt(0).toUpperCase() +
     (user.role || "caretaker").slice(1);
@@ -35,7 +36,8 @@ function MedicalHistory() {
             value={selectedId}
             onChange={(event) => setSelectedId(event.target.value)}
             style={{
-              minWidth: "230px",
+              width: "min(230px, 100%)",
+              minWidth: 0,
               padding: "12px 14px",
               borderRadius: "14px",
               border: "1px solid rgba(255,255,255,0.16)",
@@ -51,7 +53,7 @@ function MedicalHistory() {
           </select>
         </div>
 
-        <div className="dashboard-grid" style={{ gridTemplateColumns: "1.05fr 1.35fr" }}>
+        <div className="dashboard-grid" style={{ gridTemplateColumns: isMobileLayout ? "1fr" : "1.05fr 1.35fr" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
             <div className="section-card">
               <div className="section-title" style={{ marginBottom: "16px" }}>
@@ -70,6 +72,7 @@ function MedicalHistory() {
                     key={label}
                     style={{
                       display: "flex",
+                      flexWrap: "wrap",
                       justifyContent: "space-between",
                       gap: "14px",
                       padding: "12px 14px",
@@ -88,7 +91,7 @@ function MedicalHistory() {
               <div className="section-title" style={{ marginBottom: "16px" }}>
                 Latest Vitals
               </div>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: "12px" }}>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: "12px" }}>
                 {Object.entries(selectedPatient.vitals).map(([label, value]) => (
                   <div
                     key={label}

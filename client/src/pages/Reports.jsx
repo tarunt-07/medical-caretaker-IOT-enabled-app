@@ -97,8 +97,8 @@ function Reports() {
 
         {/* Confirm Delete Modal */}
         {confirmDelete && (
-          <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.4)", zIndex: 1000, display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <div className="glass-card" style={{ width: "360px", padding: "28px", textAlign: "center" }}>
+          <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.4)", zIndex: 1000, display: "flex", alignItems: "center", justifyContent: "center", padding: "20px" }}>
+            <div className="glass-card" style={{ width: "min(360px, 100%)", maxHeight: "90vh", overflowY: "auto", padding: "28px", textAlign: "center" }}>
               <div style={{ fontSize: "2.5rem", marginBottom: "12px" }}>⚠️</div>
               <div style={{ fontWeight: 800, fontSize: "1.1rem", marginBottom: "8px" }}>Delete Report?</div>
               <div style={{ color: "var(--muted)", fontSize: "0.9rem", marginBottom: "24px" }}>
@@ -117,8 +117,8 @@ function Reports() {
 
         {/* Add Modal */}
         {showAdd && (
-          <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.4)", zIndex: 1000, display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <div className="glass-card" style={{ width: "420px", padding: "28px" }}>
+          <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.4)", zIndex: 1000, display: "flex", alignItems: "center", justifyContent: "center", padding: "20px" }}>
+            <div className="glass-card" style={{ width: "min(420px, 100%)", maxHeight: "90vh", overflowY: "auto", padding: "28px" }}>
               <div style={{ fontWeight: 800, fontSize: "1.1rem", marginBottom: "20px", color: "var(--text)" }}>Upload Report</div>
               <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
                 <div>
@@ -156,12 +156,12 @@ function Reports() {
         <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
           {reports.map(r => (
             <div key={r.id} className="glass-card" style={{ padding: "18px 22px" }}>
-              <div style={{ display: "flex", alignItems: "flex-start", gap: "16px" }}>
+              <div style={{ display: "flex", alignItems: "flex-start", gap: "16px", flexWrap: "wrap" }}>
                 <div style={{ width: "44px", height: "44px", borderRadius: "var(--radius)", background: "var(--bg)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.4rem", flexShrink: 0 }}>
                   {typeIcon[r.type] || "📄"}
                 </div>
                 <div style={{ flex: 1 }}>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "12px", flexWrap: "wrap" }}>
                     <div style={{ fontWeight: 800, color: "var(--text)", fontSize: "0.95rem" }}>{r.title}</div>
                     <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
                       <span style={{ fontSize: "0.78rem", fontWeight: 700, color: statusColor[r.status], background: statusBg[r.status], padding: "4px 12px", borderRadius: "999px", textTransform: "capitalize" }}>
@@ -183,7 +183,7 @@ function Reports() {
                   {user.role === "doctor" && r.status === "pending" && (
                     <div style={{ marginTop: "12px" }}>
                       {reviewingId === r.id ? (
-                        <div style={{ display: "flex", gap: "8px" }}>
+                        <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
                           <input value={reviewNote} onChange={e => setReviewNote(e.target.value)} placeholder="Add review notes..."
                             style={{ flex: 1, padding: "8px 12px", borderRadius: "var(--radius)", border: "1.5px solid var(--primary)", background: "var(--white)", color: "var(--text)", fontSize: "0.85rem", outline: "none" }} />
                           <button onClick={() => handleReview(r.id)} style={{ padding: "8px 14px", borderRadius: "var(--radius)", border: "none", background: "var(--success)", color: "white", fontWeight: 700, fontSize: "0.82rem", cursor: "pointer" }}>✓ Submit</button>

@@ -1,13 +1,35 @@
-import { useState, useRef } from "react";
+import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 function RoleTopbar({ name, role, alerts = 0, pills = 0, notifications = 0 }) {
-  const [avatar, setAvatar] = useState(null);
+  const [avatar, setAvatar] = useState(() => {
+    const storedUser = JSON.parse(localStorage.getItem("user") || "{}");
+    return storedUser.avatar || null;
+  });
   const fileRef = useRef();
 
   const handleAvatarChange = (e) => {
     const file = e.target.files[0];
-    if (file) setAvatar(URL.createObjectURL(file));
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      const nextAvatar = typeof reader.result === "string" ? reader.result : null;
+      if (!nextAvatar) return;
+
+      setAvatar(nextAvatar);
+      const storedUser = JSON.parse(localStorage.getItem("user") || "{}");
+      localStorage.setItem(
+        "user",
+        JSON.stringify({
+          ...storedUser,
+          name: storedUser.name || name,
+          role: storedUser.role || role?.toLowerCase(),
+          avatar: nextAvatar,
+        })
+      );
+    };
+    reader.readAsDataURL(file);
   };
 
   const initials = name.split(" ").map(w => w[0]).join("").slice(0, 2).toUpperCase();
@@ -18,7 +40,7 @@ function RoleTopbar({ name, role, alerts = 0, pills = 0, notifications = 0 }) {
       <div className="topbar-left">
         <div className="topbar-avatar-wrap">
           {avatar
-            ? <img className="topbar-avatar" src={avatar} alt="avatar" style={{display:'flex'}} />
+            ? <img className="topbar-avatar topbar-avatar-image" src={avatar} alt={`${name} avatar`} />
             : <div className="topbar-avatar">{initials}</div>
           }
           <div className="avatar-upload-btn" onClick={() => fileRef.current.click()}>✏️</div>

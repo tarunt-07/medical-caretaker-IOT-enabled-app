@@ -1,57 +1,73 @@
 import express from "express";
-import { readDb, writeDb, nextId, success, failure } from "../lib/db.js";
+import {
+  deleteRecordById,
+  getRecordById,
+  insertRecord,
+  listRecords,
+  updateRecordById,
+} from "../lib/dataStore.js";
+import { success, failure } from "../lib/db.js";
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  const db = readDb();
-  return success(res, "Prescriptions fetched", db.prescriptions);
+router.get("/", async (req, res) => {
+  try {
+    return success(res, "Prescriptions fetched", await listRecords("prescriptions"));
+  } catch (error) {
+    return failure(res, error.message, 500);
+  }
 });
 
-router.post("/", (req, res) => {
+router.post("/", async (req, res) => {
   const { patientId, medicine, dosage, frequency } = req.body;
   if (!patientId || !medicine || !dosage || !frequency) {
     return failure(res, "All prescription fields are required", 400);
   }
 
-  const db = readDb();
-  const item = {
-    id: nextId(db.prescriptions),
-    patientId: Number(patientId),
-    medicine,
-    dosage,
-    frequency,
-    status: req.body.status || "pending"
-  };
+  try {
+    const item = await insertRecord("prescriptions", {
+      patientId: Number(patientId),
+      doctorId: req.body.doctorId ? Number(req.body.doctorId) : null,
+      medicine,
+      dosage,
+      frequency,
+      duration: req.body.duration ?? null,
+      notes: req.body.notes ?? null,
+      status: req.body.status || "pending",
+      createdAt: new Date().toISOString(),
+    });
 
-  db.prescriptions.push(item);
-  writeDb(db);
-  return success(res, "Prescription added", item, 201);
+    return success(res, "Prescription added", item, 201);
+  } catch (error) {
+    return failure(res, error.message, 500);
+  }
 });
 
-router.put("/:id", (req, res) => {
-  const db = readDb();
-  const item = db.prescriptions.find((p) => p.id === Number(req.params.id));
+router.put("/:id", async (req, res) => {
+  const item = await getRecordById("prescriptions", req.params.id);
   if (!item) return failure(res, "Prescription not found", 404);
 
-  item.patientId = req.body.patientId !== undefined ? Number(req.body.patientId) : item.patientId;
-  item.medicine = req.body.medicine ?? item.medicine;
-  item.dosage = req.body.dosage ?? item.dosage;
-  item.frequency = req.body.frequency ?? item.frequency;
-  item.status = req.body.status ?? item.status;
+  try {
+    const updated = await updateRecordById("prescriptions", req.params.id, {
+      patientId: req.body.patientId !== undefined ? Number(req.body.patientId) : item.patientId,
+      doctorId: req.body.doctorId !== undefined ? Number(req.body.doctorId) : item.doctorId,
+      medicine: req.body.medicine ?? item.medicine,
+      dosage: req.body.dosage ?? item.dosage,
+      frequency: req.body.frequency ?? item.frequency,
+      duration: req.body.duration ?? item.duration,
+      notes: req.body.notes ?? item.notes,
+      status: req.body.status ?? item.status,
+    });
 
-  writeDb(db);
-  return success(res, "Prescription updated", item);
+    return success(res, "Prescription updated", updated);
+  } catch (error) {
+    return failure(res, error.message, 500);
+  }
 });
 
-router.delete("/:id", (req, res) => {
-  const db = readDb();
-  const index = db.prescriptions.findIndex((p) => p.id === Number(req.params.id));
-  if (index === -1) return failure(res, "Prescription not found", 404);
-
-  const deleted = db.prescriptions[index];
-  db.prescriptions.splice(index, 1);
-  writeDb(db);
+router.delete("/:id", async (req, res) => {
+  const deleted = await deleteRecordById("prescriptions", req.params.id);
+  if (!deleted) return failure(res, "Prescription not found", 404);
   return success(res, "Prescription deleted", deleted);
 });
 

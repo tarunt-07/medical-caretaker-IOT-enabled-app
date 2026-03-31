@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import RoleSidebar from "../components/layout/RoleSidebar";
 import RoleTopbar from "../components/layout/RoleTopbar";
+import { ARDUINO_EVENT_ENDPOINT } from "../config/api";
 import { api } from "../services/api";
 
 const FALLBACK = [
@@ -64,7 +65,7 @@ function Devices() {
             <div className="page-title">📡 IoT Devices</div>
             <div className="page-subtitle">Smart dispenser management and monitoring</div>
           </div>
-          <div style={{ display: "flex", gap: "10px" }}>
+          <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
             <button className="btn btn-ghost" onClick={handleTestEvent}>🧪 Test Event</button>
             <button className="btn btn-primary" onClick={() => setShowAdd(true)}>+ Connect Device</button>
           </div>
@@ -76,8 +77,8 @@ function Devices() {
 
         {/* Add Modal */}
         {showAdd && (
-          <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.4)", zIndex: 1000, display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <div className="glass-card" style={{ width: "400px", padding: "28px" }}>
+          <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.4)", zIndex: 1000, display: "flex", alignItems: "center", justifyContent: "center", padding: "20px" }}>
+            <div className="glass-card" style={{ width: "min(400px, 100%)", maxHeight: "90vh", overflowY: "auto", padding: "28px" }}>
               <div style={{ fontWeight: 800, fontSize: "1.1rem", marginBottom: "20px", color: "var(--text)" }}>Connect New Device</div>
               <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
                 <div>
@@ -103,12 +104,12 @@ function Devices() {
           </div>
         )}
 
-        <div className="dashboard-grid" style={{ gridTemplateColumns: "1fr 1fr" }}>
+        <div className="dashboard-grid" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))" }}>
           {/* Device Cards */}
           <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
             {devices.map(d => (
               <div key={d.id} className="glass-card" style={{ padding: "20px", borderLeft: `4px solid ${d.status === "connected" ? "var(--success)" : "var(--danger)"}` }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "14px" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "14px", gap: "12px", flexWrap: "wrap" }}>
                   <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
                     <div style={{ fontSize: "2rem" }}>📦</div>
                     <div>
@@ -120,7 +121,7 @@ function Devices() {
                     {d.status === "connected" ? "● Online" : "○ Offline"}
                   </span>
                 </div>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "10px" }}>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(110px, 1fr))", gap: "10px" }}>
                   {[["💊", "Remaining", d.pillsRemaining], ["✅", "Dispensed", d.pillsDispensed], ["🕐", "Last Sync", d.lastSync ? new Date(d.lastSync).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }) : "—"]].map(([icon, label, val]) => (
                     <div key={label} style={{ textAlign: "center", padding: "10px", borderRadius: "var(--radius)", background: "var(--bg)" }}>
                       <div style={{ fontSize: "1.1rem" }}>{icon}</div>
@@ -151,7 +152,7 @@ function Devices() {
             <div className="section-card">
               <div className="section-title" style={{ marginBottom: "12px" }}>🔧 Arduino Setup</div>
               <div style={{ fontSize: "0.82rem", color: "var(--muted)", lineHeight: 1.7 }}>
-                Send POST to: <code style={{ background: "var(--bg)", padding: "2px 6px", borderRadius: "4px", color: "var(--primary)", fontSize: "0.8rem" }}>http://YOUR_IP:5000/api/devices/arduino-event</code>
+                Send POST to: <code style={{ background: "var(--bg)", padding: "2px 6px", borderRadius: "4px", color: "var(--primary)", fontSize: "0.8rem", overflowWrap: "anywhere" }}>{ARDUINO_EVENT_ENDPOINT}</code>
                 <br /><br />
                 <strong style={{ color: "var(--text)" }}>Event types:</strong> pill_taken, pill_missed, device_offline, low_pills
                 <br /><br />

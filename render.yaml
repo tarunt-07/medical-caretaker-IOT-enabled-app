@@ -1,0 +1,8 @@
+services:
+  - type: web
+    name: medicine-dispenser-api
+    env: node
+    rootDir: server
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health

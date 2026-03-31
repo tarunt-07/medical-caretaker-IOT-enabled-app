@@ -1,32 +1,40 @@
 import express from "express";
-import { readDb, writeDb, nextId, success, failure } from "../lib/db.js";
+import { insertRecord, listRecords } from "../lib/dataStore.js";
+import { success, failure } from "../lib/db.js";
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  const db = readDb();
-  return success(res, "Logs fetched", db.logs);
+router.get("/", async (req, res) => {
+  try {
+    return success(res, "Logs fetched", await listRecords("logs"));
+  } catch (error) {
+    return failure(res, error.message, 500);
+  }
 });
 
-router.post("/", (req, res) => {
+router.post("/", async (req, res) => {
   const { patientName, temperature, bloodPressure, sugar, note } = req.body;
-  if (!patientName || !temperature || !bloodPressure || !sugar || !note) {
-    return failure(res, "All log fields are required", 400);
+  if (!note) {
+    return failure(res, "note is required", 400);
   }
 
-  const db = readDb();
-  const log = {
-    id: nextId(db.logs),
-    patientName,
-    temperature,
-    bloodPressure,
-    sugar,
-    note
-  };
+  try {
+    const log = await insertRecord("logs", {
+      patientId: req.body.patientId ? Number(req.body.patientId) : null,
+      patientName: patientName ?? null,
+      temperature: temperature ?? null,
+      bloodPressure: bloodPressure ?? null,
+      sugar: sugar ?? null,
+      date: req.body.date ?? new Date().toISOString().split("T")[0],
+      by: req.body.by ?? "Caretaker",
+      note,
+      createdAt: new Date().toISOString(),
+    });
 
-  db.logs.push(log);
-  writeDb(db);
-  return success(res, "Log saved", log, 201);
+    return success(res, "Log saved", log, 201);
+  } catch (error) {
+    return failure(res, error.message, 500);
+  }
 });
 
 export default router;

@@ -24,6 +24,11 @@ export const CARE_PATIENTS = [
       "Encourage hydration and gentle mobility exercises",
       "Monitor wound healing and report any redness",
     ],
+    firstAidGuidance: [
+      "If dizziness occurs while standing, help Rahul sit down immediately and offer small sips of water.",
+      "If the wound site starts bleeding, apply gentle pressure with a clean sterile pad and call the doctor if it continues beyond 10 minutes.",
+      "For sudden fever above 100.4 F, record the temperature, keep him hydrated, and contact Dr. Tarun Kumar the same day.",
+    ],
     nextAppointment: "April 3, 2026 at 10:30 AM",
   },
   {
@@ -50,6 +55,11 @@ export const CARE_PATIENTS = [
       "Needs low-salt diet tracking",
       "Doctor requested evening BP logs for 7 days",
     ],
+    firstAidGuidance: [
+      "If Meena reports chest tightness, stop activity, keep her seated upright, and contact emergency care if symptoms do not ease within a few minutes.",
+      "If blood pressure rises above the doctor's safe limit, recheck after 10 minutes of rest and inform Dr. Priya Sharma with both readings.",
+      "For unusual sweating or shortness of breath, loosen tight clothing, maintain calm breathing, and prepare for urgent medical review.",
+    ],
     nextAppointment: "April 1, 2026 at 2:00 PM",
   },
   {
@@ -75,6 +85,11 @@ export const CARE_PATIENTS = [
     notes: [
       "Check pre-dinner sugar levels this week",
       "Review meal adherence before next consult",
+    ],
+    firstAidGuidance: [
+      "If Arjun feels shaky or sweaty, check sugar immediately and give a fast sugar source like glucose or juice if he is conscious.",
+      "If sugar remains low after 15 minutes, repeat fast sugar once and call the doctor.",
+      "If he becomes confused or unresponsive, seek emergency help immediately and do not force food or water.",
     ],
     nextAppointment: "April 5, 2026 at 11:00 AM",
   },

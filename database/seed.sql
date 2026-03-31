@@ -1,0 +1,4 @@
+-- Seed this project by importing your existing JSON data through the sync script:
+-- 1. Create the tables from schema.sql in Supabase SQL Editor.
+-- 2. Set SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY in server/.env.
+-- 3. Run from server/: node scripts/sync-db-to-supabase.mjs
